@@ -11,7 +11,7 @@ body {
 }
 
 
-.remove-all-padding{
+.remove-all-padding {
 margin:0 ! important;
 padding:0 ! important;
 }
@@ -24,26 +24,22 @@ padding:0 ! important;
 .headline {
   padding: 1.2rem;
   background-color: #002855;
-}
-
-.brand-logo {
-
-  /* display:inline; */
-  float:left;
-  max-width: 150px;
   display: flex;
   align-items: center;
 }
 
+.brand-logo {
+  float:left;
+  width: 20%;
+  max-width: 150px;
+  min-width: 80px;
+}
+
 .headline-content {
-  float:right;
-  /* display: inline; */
-  /* display: flex; */
-  /* align-items: center; */
 }
 
 .level-info {
-  float: right;
+  /* float: right; */
   /* display: flex;
   align-items: center; */
 }
@@ -74,4 +70,11 @@ a {
 
 .history-charts, .text-status, .issues {
   background-color: #EEEEEE;
+}
+
+@media screen and (max-width: 399px) {
+	.brand-logo {
+	    float: unset;
+      display:block;
+	}
 }
