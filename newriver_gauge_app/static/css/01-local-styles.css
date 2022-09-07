@@ -1,0 +1,52 @@
+/* my styles */
+
+/* #002855 WVU */
+/* #EAAA00 WVU */
+/* #00B140 Marshall */
+
+
+body {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+.remove-all-padding{
+margin:0 ! important;
+padding:0 ! important;
+}
+
+/* turn off the modebar here because it's not working in config */
+.modebar { display: none !important; }
+
+/* reduce spacing between plots */
+.chart {
+  margin-top: 1vh;
+}
+
+
+footer {
+  font-size: 0.8rem;
+}
+
+.headline {
+  padding: 1.2rem;
+  background-color: #002855;
+}
+
+.text-status {
+  padding: 1.1rem;
+}
+
+a {
+  color: #b36200;
+  text-decoration: none;
+}
+
+.page-title {
+  color: #EAAA00;
+}
+
+.history-charts, .text-status, .issues {
+  background-color: #EEEEEE;
+}

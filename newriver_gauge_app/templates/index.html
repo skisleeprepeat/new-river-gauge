@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New River Levels</title>
+  <!-- bootstrap 4 -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+
+  <!-- boostrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+  <!-- my styles (needs to be loaded after the plotly code to override it) -->
+  <link rel='stylesheet' , type='text/css' href="{{ url_for('static',filename='css/local-styles.css') }}" />
+
+</head>
+
+<body>
+
+  <div class='headline text-white'>
+
+    <div class="brand-logo">
+      <img  src="{{ url_for('static', filename='img/gorge_logo.svg') }}" alt="eddyout design logo" style="max-width:200; height:200;">
+    </div>
+
+    <div class='headline-content'>
+      <h1 class='page-title display-4'>New River Gorge Virtual Gauge</h1>
+
+      <div class="level-info">
+        <h2 class='display-5'>Current Level: {{ text_update[0] }}'</h2>
+        <p><i>(Last available reading at {{ text_update[1] }})</i></p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class='text-status text-center'>
+    <!-- text level update -->
+    <div id='text-update'>
+      <p>Change in last hour of readings: <strong>{{ text_update[2] }}&apos;</strong></p>
+      {% autoescape false %}
+      <p>{{ text_update[3] }}</p>
+      {% endautoescape %}
+
+    </div>
+
+
+
+    <hr>
+    <div class='history-charts'>
+      <h2 class='fs-3'>7-day Flow History</h2>
+      <!-- 7 day hydrograph for Faytte Station gauge feet level -->
+      <div id='fayette_chart' class='chart responsive-plot text-center' style='max-height:400px; margin-top: 1vh !important;'></div>
+      <!-- 7 day level for gauges upstream and downstream -->
+      <div id='multi_chart' class='chart responsive-plot text-center' style='max-height:400px;  margin-top: 1vh !important;'></div>
+    </div>
+    <div class='text-center'>
+      <a href="https://www.americanwhitewater.org/content/River/state-summary/state/WV/" target="_blank">
+        See what's running elsewhere in WV
+      </a>
+    </div>
+    <hr>
+    <h2 class='text-center fs-3'>New River Gorge Paddling Information</h2>
+    <br>
+    <p>
+      <a href="https://www.americanwhitewater.org/content/River/view/river-detail/2418/main" target="_blank">
+        New River paddling beta from American Whitewater
+      </a>
+    </p>
+    <p>
+      <a href="https://aceadventuregear.com/lower-new-river-gorge-rapids/" target="_blank">
+        ACE Adventure Center rapid-by-rapid detailed video guide
+      </a>
+    </p>
+    <p>
+      <a href="https://www.nps.gov/neri/planyourvisit/upload/New-River-Guide_Accessible_1.pdf" target="_blank">
+        NPS River Map and Guide (Printable PDF)
+      </a>
+    </p>
+  <hr>
+  </div>
+
+
+
+
+  <div class='issues'>
+
+    <h2 class='text-center fs-3'>Current Issues</h2>
+    <div class='container'>
+      <p><strong>EAT YOUR BOATER VEGETABLES </strong> Do you know which
+        organization works for your recreational river access
+        and fights to protect for river access and streamflows both
+        here in Colorado and nationwide?
+        <a href="https://www.americanwhitewater.org/" target="_blank">
+          American Whitewater</a> is the primary advocate for the preservation
+        and protection of whitewater rivers throughout the United States, and
+        connects the interests of human-powered recreational river users with
+        ecological and science-based data to achieve the goals within its mission.
+        Have you paid your dues for the year? Have you paid your dues EVER?
+        Maybe its time to (wo)man up and actually contribute something to your
+        recreational community.
+      </p>
+      <div class='text-center'>
+        <p><a class="btn btn-secondary" href="https://membership.americanwhitewater.org/s/lightningmembership" target='_blank' role='button'>CLICK HERE TO PAY MY AMERICAN WHITEWATER DUES TODAY FOR LESS $ THAN MY BAR TAB LAST NIGHT.</a></p>
+        <br>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="bg-dark text-white">
+    <div class='container p-3 text-center '>
+      <p>View WV input gauges at their <a href="https://waterdata.usgs.gov/co/nwis/uv?site_no=03185400&format=gif_mult_sites&PARAmeter_cd=00060&period=7" target="_blank">source page</a> or at the statewide <a
+          href="https://waterdata.usgs.gov/wv/nwis/current/?type=flow&group_key=huc_cd" target='_blank'>WV Realtime Streamflow Table.</a></p>
+      <p>Streamflow data is sourced from the <a href="https://waterservices.usgs.gov/rest/">USGS Instantaneous Values Webservice</a><br>(Taxes do good and important things!)</p>
+      <p>This site created with Python's <a href="https://palletsprojects.com/p/flask/">Flask</a> framework, the <a href="https://plotly.com/python/"
+          target="_blank">Plotly</a> package, and USGS's <a href="https://github.com/USGS-python/dataretrieval" target='_blank'>DataRetrieval</a> package. </p>
+      <p>&copy <a href="https://www.billhoblitzell.com" target="_blank">EddyOut Design  |  Bill Hoblitzell  |  2022</a></p>
+      <p><a href="https://www.instagram.com/explore/tags/turdsinparadise/">#turdsinparadise</a></p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
+
+<!-- Plotly library -->
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+< <!-- local plotly code -->
+  <script type='text/javascript'>
+    var fayette_graph = {{ fayetteJSON | safe }}; // set the json data we passed for the graph to a variable
+    var multi_graph = {{  multiJSON | safe }};
+    var my_config = {
+      'responsive': true,
+      'displayModeBar': false
+    }
+    Plotly.newPlot('fayette_chart', data = fayette_graph, config = my_config); // call plotly's js method to place the plot in the div with the specified id
+    Plotly.newPlot('multi_chart', data = multi_graph, config = my_config);
+  </script>
+
+  <script type='text/javascript'>
+    // MAKE THE PLOTS RESPONSIVE
+    (function() {
+      var d3 = Plotly.d3;
+      var WIDTH_IN_PERCENT_OF_PARENT = 100,
+        HEIGHT_IN_PERCENT_OF_PARENT = 90;
+
+      var gd3 = d3.selectAll(".responsive-plot")
+        .style({
+          width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+          'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
+
+          height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
+          'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+        });
+
+      var nodes_to_resize = gd3[0]; //not sure why but the goods are within a nested array
+      window.onresize = function() {
+        for (var i = 0; i < nodes_to_resize.length; i++) {
+          Plotly.Plots.resize(nodes_to_resize[i]);
+        }
+      };
+
+    })();
+  </script>
