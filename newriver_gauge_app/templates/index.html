@@ -2,6 +2,21 @@
 <html lang="en" dir="ltr">
 
 <head>
+  <!-- Google Analytics tags -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TEK12B6F27"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-TEK12B6F27');
+  </script>
+
+  <!-- Google Adsense tags -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6757883769952338"
+     crossorigin="anonymous"></script>
+
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -139,7 +154,7 @@
 <!-- Plotly library -->
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 
-< <!-- local plotly code -->
+<!-- local plotly code -->
   <script type='text/javascript'>
     var fayette_graph = {{ fayetteJSON | safe }}; // set the json data we passed for the graph to a variable
     var multi_graph = {{  multiJSON | safe }};
